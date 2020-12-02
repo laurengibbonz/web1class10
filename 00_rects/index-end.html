@@ -28,20 +28,49 @@
 
 <script type="text/javascript">
 //Challenge #1: Select all the rects
+const rects = document.querySelectorAll('.rect');
 
 //Challenge #2: Create an IIFE to update all rects to green on load
+for(let i = 0; i<rects.length; i++) {
+    // rects[i].style.backgroundColor = 'green';
+}
+
+rects.forEach(function(elem) {
+    elem.style.backgroundColor = 'green';
+});
+
+// rects.style.backgroundColor = 'green';
 
 
 //Challenge #3: Create constant variables for .character-options class buttons, text id, character-name id
+const charButtons = document.querySelectorAll('.character-options'),
+    text = document.getElementById('text'),
+    charName = document.getElementById('character-name');
 
 //Challenge #4: Create an updateable variable called character
+let character;
 
 //Challenge #5: Create a loop to find all charButtons
 //Add Event Listener on click to the charButton elements
 //Show the text id element on charButton click
 //Update the character variable name of the button clicked
 //Update character-name id with the character variable
+charButtons.forEach(function(elem) {
+    elem.addEventListener('click', function(event){
+        console.log(event);
+        if(event.target.id == 'cat') {
+            character = 'Cat';
+        } else if(event.target.id == 'dog') {
+            character = 'Dog';
+        }
+        text.style.opacity = 1;
+        charName.innerHTML = character;
 
+        if(character == 'Dog') {
+            document.getElementById('chapter2').innerHTML = 'GO HOME DOG';
+        }
+    });
+});
 
 </script>
 </body>
